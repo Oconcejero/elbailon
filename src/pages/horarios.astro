@@ -1,0 +1,210 @@
+---
+import Layout from "../layout/layout.astro";
+
+const horariosTarde = [
+  {
+    actividad: "LATINOS",
+    lunes: "20:00 inic / 21:00 avan",
+    martes: "19:00 inic / 20:00 inic / 21:00 inter",
+    miercoles: "20:00 inic / 21:00 inic",
+    jueves: "20:00 inic / 21:00 inic",
+    viernes: "19:00 inter / 20:00 inic / 21:00 inic",
+    sabado: "12:00 inic",
+  },
+  {
+    actividad: "BAILES DE SALÓN",
+    lunes: "20:00 inter / 21:00 inic",
+    martes: "20:00 inic / 21:00 inic",
+    miercoles: "20:00 inic / 21:00 inic",
+    jueves: "19:00 inic / 20:00 inic / 21:00 inic",
+    viernes: "20:00 inter / 21:00 inter",
+    sabado: "11:00 inic / 13:00 inter / 20:00 inic",
+  },
+  {
+    actividad: "BACHATA / SEXY STYLE",
+    lunes: "20:00 inic / 20:00",
+    martes: "21:00 inic",
+    miercoles: "21:00 inic / 21:00",
+    jueves: "21:00 inic / 20:00",
+    viernes: "21:00 inic / 21:00",
+    sabado: "",
+  },
+  {
+    actividad: "KIZOMBA / ROCK & ROLL",
+    lunes: "",
+    martes: "",
+    miercoles: "21:00 / 21:00",
+    jueves: "21:00",
+    viernes: "21:00 / 18:00",
+    sabado: "11:00",
+  },
+  {
+    actividad: "TANGO / COUNTRY / LINE DANCE",
+    lunes: "20:00 / 20:00 inic / 21:00 inic",
+    martes: "",
+    miercoles: "21:00 / 18:30 / 19:30 a 21",
+    jueves: "21:00",
+    viernes: "",
+    sabado: "",
+  },
+  {
+    actividad: "BOXEO - K1 / MUAY THAI",
+    lunes: "18:00 / 20:00",
+    martes: "",
+    miercoles: "18:00 / 20:00",
+    jueves: "",
+    viernes: "",
+    sabado: "13:00",
+  },
+  {
+    actividad: "FUNKY HIP-HOP / K-POP",
+    lunes: "18:00 / 21:00 / 21:00",
+    martes: "18:00 / 20:00 / 18:00 / 20:00",
+    miercoles: "18:00 / 21:00 / 21:00",
+    jueves: "18:00 / 20:00 / 18:00 / 20:00",
+    viernes: "18:00 / 18:00",
+    sabado: "12:00 / 12:00",
+  },
+  {
+    actividad: "BALLET (Infantil/Clásico/Fitness)",
+    lunes: "18:00 / 18:00 / 20:00",
+    martes: "17:00 / 19:15-20:30 / 18:00",
+    miercoles: "18:00 / 18:00 / 21:00",
+    jueves: "17:00 / 19:15-20:30 / 18:00",
+    viernes: "18:00 / 19:00",
+    sabado: "12:00 a 13:30",
+  },
+  {
+    actividad: "FLAMENCO / SEVILLANAS",
+    lunes: "20:00 / 18:50",
+    martes: "18:00 / 20:00 / 20:00",
+    miercoles: "21:00",
+    jueves: "18:00 / 20:00 / 20:00",
+    viernes: "19:00 / 20:00",
+    sabado: "11:00",
+  },
+  {
+    actividad: "PILATES / ZUMBA / YOGA",
+    lunes: "19:00 / 19:00 / 21:00",
+    martes: "19:00 / 20:00 / 20:00",
+    miercoles: "19:00 / 19:00 / 21:00",
+    jueves: "19:00 / 20:00 / 20:00",
+    viernes: "",
+    sabado: "11:00",
+  },
+];
+
+const horariosManana = [
+  {
+    actividad: "PILATES",
+    lunes: "10:15 / 11:15",
+    martes: "9:15-10:15 / 11:15-12:15",
+    miercoles: "10:15 / 11:15",
+    jueves: "9:15-10:15 / 11:15-12:15",
+    viernes: "",
+    sabado: "12:30",
+  },
+  {
+    actividad: "ZUMBA / SEVILLANAS",
+    lunes: "11:15 / 11:15",
+    martes: "10:15",
+    miercoles: "11:15 / 11:15",
+    jueves: "10:15",
+    viernes: "",
+    sabado: "",
+  },
+  {
+    actividad: "YOGA / GIMN. MANT.",
+    lunes: "12:15 / 10:15",
+    martes: "12:15",
+    miercoles: "12:15 / 10:15",
+    jueves: "12:15",
+    viernes: "10:15 / 11:15 / 10:15",
+    sabado: "",
+  },
+];
+---
+
+<Layout title="Horarios 2025-2026 | El Bailón">
+  <section class="horarios-section">
+    <div class="container">
+      <h1>Horarios 2025 - 2026</h1>
+      <p class="center">📍 Carretera de Canillas, 46 Posterior</p>
+
+      <h2>Horario de Tardes</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Actividad</th>
+              <th>Lunes</th>
+              <th>Martes</th>
+              <th>Miércoles</th>
+              <th>Jueves</th>
+              <th>Viernes</th>
+              <th>Sábado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              horariosTarde.map((h) => (
+                <tr>
+                  <td class="actividad-name">
+                    <strong>{h.actividad}</strong>
+                  </td>
+                  <td>{h.lunes}</td>
+                  <td>{h.martes}</td>
+                  <td>{h.miercoles}</td>
+                  <td>{h.jueves}</td>
+                  <td>{h.viernes}</td>
+                  <td>{h.sabado}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-4">Horario de Mañanas</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Actividad</th>
+              <th>Lunes</th>
+              <th>Martes</th>
+              <th>Miércoles</th>
+              <th>Jueves</th>
+              <th>Viernes</th>
+              <th>Sábado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              horariosManana.map((h) => (
+                <tr>
+                  <td class="actividad-name">
+                    <strong>{h.actividad}</strong>
+                  </td>
+                  <td>{h.lunes}</td>
+                  <td>{h.martes}</td>
+                  <td>{h.miercoles}</td>
+                  <td>{h.jueves}</td>
+                  <td>{h.viernes}</td>
+                  <td>{h.sabado}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="notas">
+        <p>*Servicio de telebaile y clases particulares.</p>
+        <p>
+          *Cursos especiales para novios, defensa personal y cenas con baile.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

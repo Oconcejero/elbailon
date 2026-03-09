@@ -1,0 +1,152 @@
+---
+import Layout from "../layout/layout.astro";
+---
+
+<Layout title="Inicio | Escuela El Bailón">
+	<section class="hero-home">
+		<video autoplay muted loop playsinline class="video-background">
+			<source src="/public/sport.mp4" type="video/mp4" />
+		</video>
+
+		<div class="hero-overlay"></div>
+
+		<div class="hero-text">
+			<h1>Siente el ritmo</h1>
+			<p>La mejor escuela de baile de Madrid</p>
+			<a href="/contacto" class="hero-cta">¡Reserva tu clase de prueba!</a>
+		</div>
+	</section>
+	<section class="contact-strip">
+		<div class="container">
+			<h2>¿Tienes dudas? Pregúntanos!</h2>
+			<p>Estamos encantados de ayudarte a elegir tu estilo ideal.</p>
+			<a href="/contacto" class="btn-outline">Ir al formulario de contacto</a>
+		</div>
+	</section>
+
+	<section class="activities-full">
+		<div class="activity-card bailes-de-salon">
+			<a href="/actividades#bailes-de-salon" class="card-content">
+				<h2>Bailes de salón</h2>
+				<span>Ver horarios</span>
+			</a>
+		</div>
+
+		<div class="activity-card latinos">
+			<a href="/actividades#latinos" class="card-content">
+				<h2>Latinos</h2>
+				<span>Ver horarios</span>
+			</a>
+		</div>
+
+		<div class="activity-card funky">
+			<a href="/actividades#funky" class="card-content">
+				<h2>Funky Hip-Hop</h2>
+				<span>Ver horarios</span>
+			</a>
+		</div>
+
+		<div class="activity-card ballet">
+			<a href="/actividades#ballet" class="card-content">
+				<h2>Ballet</h2>
+				<span>Ver horarios</span>
+			</a>
+		</div>
+
+		<div class="activity-card puntas">
+			<a href="/actividades#puntas" class="card-content">
+				<h2>Puntas</h2>
+				<span>Ver horarios</span>
+			</a>
+		</div>
+
+		<div class="activity-card contemporaneo">
+			<a href="/actividades#contemporaneo" class="card-content">
+				<h2>Contemporáneo</h2>
+				<span>Ver horarios</span>
+			</a>
+		</div>
+	</section>
+
+	<section class="info-extra">
+		<h2>Nuestra Escuela</h2>
+		<p>Más de 10 años enseñando...</p>
+	</section>
+</Layout>
+
+<style>
+	/* Contenedor principal del vídeo */
+	.hero-home {
+		position: relative;
+		width: 100%;
+		height: 80vh; /* Ajusta este valor si quieres que sea más alto o bajo */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		color: white;
+	}
+
+	/* Estilos del vídeo para que ocupe todo el fondo */
+	.video-background {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		z-index: -2;
+		object-fit: cover;
+	}
+
+	/* Capa oscura para que el texto resalte */
+	.hero-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.4);
+		z-index: -1;
+	}
+
+	/* Texto sobre el vídeo */
+	.hero-text {
+		text-align: center;
+		z-index: 1;
+	}
+
+	.hero-text h1 {
+		font-size: 4rem;
+		text-transform: uppercase;
+		font-weight: 800;
+		margin: 0;
+		color: var(--primary); /* Tu dorado */
+		text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+	}
+
+	.hero-cta {
+		display: inline-block;
+		margin-top: 1.5rem;
+		padding: 0.8rem 2rem;
+		background: var(--primary);
+		color: black;
+		text-decoration: none;
+		font-weight: bold;
+		text-transform: uppercase;
+		border-radius: 4px;
+		transition: transform 0.2s;
+	}
+
+	.hero-cta:hover {
+		transform: scale(1.05);
+	}
+
+	.info-extra {
+		padding: 4rem 2rem;
+		background: #111;
+		text-align: center;
+	}
+</style>

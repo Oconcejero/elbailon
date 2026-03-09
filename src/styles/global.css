@@ -1,0 +1,620 @@
+:root {
+  --primary: #d4af37;
+  /* Dorado */
+  --dark: #0a0a0a;
+  /* Fondo casi negro */
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: #111;
+  /* Fondo oscuro para que resalte el contenido */
+  color: var(--white);
+}
+
+/* Header que ocupa todo el ancho */
+.main-header {
+  background-color: var(--dark);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.header-container {
+  max-width: 1400px;
+  /* Contenedor ancho para que respire */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  /* Logo a la izquierda, Nav a la derecha */
+  align-items: center;
+  padding: 0 2rem;
+}
+
+/* Logotipo más grande */
+.logo img {
+  height: 150px;
+  /* Antes era 50px, ahora tiene más presencia */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+  transform: scale(1.05);
+}
+
+/* Navegación Horizontal */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  /* Espacio entre botones */
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:not(.btn-contacto):hover {
+  color: var(--primary);
+}
+
+/* Botón Contacto - Pequeño pero matón */
+.btn-contacto {
+  background-color: var(--primary);
+  color: var(--dark) !important;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  border: 1px solid var(--primary);
+}
+
+.btn-contacto:hover {
+  background-color: transparent;
+  color: var(--primary) !important;
+}
+
+/* Franja de contacto debajo del video */
+.contact-strip {
+  background-color: var(--primary);
+  /* El dorado de El Bailón */
+  color: var(--dark);
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.contact-strip h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.contact-strip p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+/* Botón con estilo "outline" (borde negro) */
+.btn-outline {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--dark);
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: var(--dark);
+  color: var(--primary);
+}
+
+/* Contenedor para centrar el contenido */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.activities-full {
+  display: flex;
+  flex-wrap: wrap;
+  /* Para que en el móvil se pongan uno debajo de otro */
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.activity-card {
+  position: relative;
+  flex: 1 1 50%;
+  /* Dos cuadros por fila en PC */
+  height: 400px;
+  /* Altura de cada bloque */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imágenes de fondo para cada cuadro */
+.bailes-de-salon {
+  background: url('/public/actividades/bailes-de-salon.jpg') center/cover no-repeat;
+}
+
+.latinos {
+  background: url('/public/actividades/latinos.jpg') center/cover no-repeat;
+}
+
+.funky {
+  background: url('/public/actividades/funcky.jpg') center/cover no-repeat;
+}
+
+.ballet {
+  background: url('/public/actividades/ballet.jpg') center/cover no-repeat;
+}
+
+.puntas {
+  background: url('/public/actividades/puntas.jpg') center/cover no-repeat;
+}
+
+.contemporaneo {
+  background: url('/public/actividades/Baile-contemporáneo.jpg') center/cover no-repeat;
+}
+
+/* Capa oscura que se aclara al pasar el ratón */
+.activity-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  transition: background 0.4s ease;
+  z-index: 1;
+}
+
+.activity-card:hover::before {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Texto centrado */
+.card-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+.card-content h2 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 3px;
+  font-weight: 900;
+  transition: transform 0.3s ease;
+}
+
+.card-content span {
+  display: block;
+  margin-top: 10px;
+  color: var(--primary);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.activity-card:hover .card-content h2 {
+  transform: translateY(-5px);
+}
+
+.activity-card:hover .card-content span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ajuste para móviles: Un cuadro por fila */
+@media (max-width: 768px) {
+  .activity-card {
+    flex: 1 1 100%;
+    height: 300px;
+  }
+
+  .card-content h2 {
+    font-size: 2rem;
+  }
+}
+
+/* --- Estilos base del botón (oculto en escritorio) --- */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+/* --- Media Query para móviles (ajusta el px según necesites) --- */
+@media (max-width: 1024px) {
+  .mobile-menu-toggle {
+    display: flex;
+    /* Aparece la hamburguesa */
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Escondido a la derecha */
+    width: 70%;
+    height: 100vh;
+    background-color: var(--dark);
+    padding: 80px 2rem;
+    transition: right 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+  }
+
+  .nav-menu.active {
+    right: 0;
+    /* Se desliza hacia adentro */
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+
+  .nav-links .btn-contacto {
+    width: 100%;
+    /* Que ocupe todo el ancho en el móvil */
+    text-align: center;
+    margin-left: 0;
+  }
+}
+
+/* CONTACTO */
+
+.contacto-page {
+  padding: 5rem 1rem;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.contacto-page h1 {
+  text-align: center;
+  color: var(--primary);
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  opacity: 0.8;
+}
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  background: #333;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 4px;
+}
+
+.btn-enviar {
+  background: var(--primary);
+  color: black;
+  padding: 1rem;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-enviar:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}
+
+/* Mapa e Info */
+.map-wrapper {
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.contact-details h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contacto-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MAPA GOOGLE */
+
+/* Añade esto a tu bloque de estilos */
+.map-container {
+  border: 2px solid #d4af37;
+  /* El dorado de tu logo */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+}
+
+.map-container iframe {
+  display: block;
+  /* Quita espacios raros debajo del mapa */
+}
+
+
+
+/* Añade esto a tu bloque de estilos */
+.google-maps-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  /* Asegúrate de que no tenga un padding que empuje el mapa */
+  padding: 0;
+}
+
+.google-maps-card:hover iframe {
+  filter: none;
+  /* Al pasar el ratón, vuelve a sus colores originales */
+}
+
+.map-header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2a2a2a;
+}
+
+.rating-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.score {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--primary);
+  /* Tu dorado */
+}
+
+.stars {
+  color: #ffcc00;
+  letter-spacing: 2px;
+}
+
+.count {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.btn-google {
+  background: #fff;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-google:hover {
+  background: var(--primary);
+  color: #000;
+}
+
+/* ACTIVIDADES */
+
+.actividades-hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/hero-bg.jpg');
+  background-size: cover;
+  color: white;
+}
+
+.actividades-hero h1 {
+  font-size: 3.5rem;
+  color: var(--primary);
+  /* Tu dorado */
+  margin-bottom: 1rem;
+}
+
+.grid-actividades {
+  padding: 4rem 0;
+  background-color: #121212;
+}
+
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  border: 1px solid #333;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+}
+
+.card-img {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.overlay h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.card-content {
+  padding: 1.5rem;
+  color: #ccc;
+}
+
+.btn-saber-mas {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
+}
+
+.btn-saber-mas:hover {
+  border-bottom-color: var(--primary);
+}
+
+/* HORARIOS */
+
+.horarios-section {
+  padding: 4rem 1rem;
+  background-color: #121212;
+  color: white;
+}
+
+.table-container {
+  overflow-x: auto;
+  /* Permite scroll lateral en móviles */
+  margin-bottom: 3rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1e1e1e;
+  min-width: 800px;
+  /* Asegura que la tabla no se aplaste */
+}
+
+th,
+td {
+  padding: 1rem;
+  border: 1px solid #333;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+th {
+  background-color: var(--primary);
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.actividad-name {
+  background-color: #252525;
+  color: var(--primary);
+  text-align: left;
+}
+
+tr:hover {
+  background-color: #2a2a2a;
+}
+
+.center {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.mt-4 {
+  margin-top: 4rem;
+}
+
+.notas {
+  margin-top: 2rem;
+  font-style: italic;
+  color: #888;
+  text-align: center;
+}
