@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 const { title = "Escuela de Danza El Bailón" } = Astro.props;
+const base = "/elbailon";
 ---
 
 <!doctype html>
@@ -13,8 +14,8 @@ const { title = "Escuela de Danza El Bailón" } = Astro.props;
   <body>
     <header class="main-header">
       <div class="header-container">
-        <a href="/" class="logo">
-          <img src="/EL_BAILON.png" alt="Logo El Bailón" />
+        <a href={`${base}/`} class="logo">
+          <img src={`${base}/EL_BAILON.png`} alt="Logo El Bailón" />
         </a>
 
         <button class="mobile-menu-toggle" aria-label="Abrir menú">
@@ -25,12 +26,14 @@ const { title = "Escuela de Danza El Bailón" } = Astro.props;
 
         <nav class="nav-menu">
           <ul class="nav-links">
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/actividades">Actividades</a></li>
-            <li><a href="/horarios">Horarios</a></li>
-            <li><a href="/fiestasyeventos">Fiestas y Eventos</a></li>
-            <li><a href="/galeria">Galería</a></li>
-            <li><a href="/contacto" class="btn-contacto">Contacto</a></li>
+            <li><a href={`${base}/`}>Inicio</a></li>
+            <li><a href={`${base}/actividades`}>Actividades</a></li>
+            <li><a href={`${base}/horarios`}>Horarios</a></li>
+            <li><a href={`${base}/fiestasyeventos`}>Fiestas y Eventos</a></li>
+            <li><a href={`${base}/galeria`}>Galería</a></li>
+            <li>
+              <a href={`${base}/contacto`} class="btn-contacto">Contacto</a>
+            </li>
           </ul>
         </nav>
       </div>
