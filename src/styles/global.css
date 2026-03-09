@@ -153,27 +153,27 @@ body {
 
 /* Imágenes de fondo para cada cuadro */
 .bailes-de-salon {
-  background: url('/public/actividades/bailes-de-salon.jpg') center/cover no-repeat;
+  background: url('/elbailon/actividades/bailes-de-salon.jpg') center/cover no-repeat;
 }
 
 .latinos {
-  background: url('/public/actividades/latinos.jpg') center/cover no-repeat;
+  background: url('/elbailon/actividades/latinos.jpg') center/cover no-repeat;
 }
 
 .funky {
-  background: url('/public/actividades/funcky.jpg') center/cover no-repeat;
+  background: url('/elbailon/actividades/funcky.jpg') center/cover no-repeat;
 }
 
 .ballet {
-  background: url('/public/actividades/ballet.jpg') center/cover no-repeat;
+  background: url('/elbailon/actividades/ballet.jpg') center/cover no-repeat;
 }
 
 .puntas {
-  background: url('/public/actividades/puntas.jpg') center/cover no-repeat;
+  background: url('/elbailon/actividades/puntas.jpg') center/cover no-repeat;
 }
 
 .contemporaneo {
-  background: url('/public/actividades/Baile-contemporáneo.jpg') center/cover no-repeat;
+  background: url('/elbailon/actividades/Baile-contemporáneo.jpg') center/cover no-repeat;
 }
 
 /* Capa oscura que se aclara al pasar el ratón */
