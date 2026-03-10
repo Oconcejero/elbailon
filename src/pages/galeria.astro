@@ -1,5 +1,226 @@
 ---
 import Layout from "../layout/layout.astro";
+const base = import.meta.env.BASE_URL;
+
+const fotos = [
+  { src: "galeria/1.jpg", alt: "Clase de danza urbana" },
+  { src: "galeria/2.jpg", alt: "Grupo de danza contemporánea" },
+  { src: "galeria/3.jpg", alt: "Actuación fin de curso" },
+  { src: "galeria/4.jpg", alt: "Ensayo en sala" },
+  { src: "galeria/5.jpg", alt: "Salto en exteriores" },
+];
 ---
 
-<Layout />
+<Layout title="Galería | Escuela El Bailón">
+  <section class="galeria-section">
+    <div class="container">
+      <h1>Galería</h1>
+      <div class="linea-adorno"></div>
+
+      <div class="galeria-grid">
+        {
+          fotos.map((foto, index) => (
+            <div class="foto-item" data-index={index}>
+              <img src={`${base}${foto.src}`} alt={foto.alt} loading="lazy" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <div id="lightbox" class="lightbox">
+    <span class="close-btn">&times;</span>
+    <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+    <div class="img-container">
+      <img class="lightbox-content" id="img-full" src="" alt="" />
+      <div id="caption"></div>
+    </div>
+    <button class="nav-btn next" id="nextBtn">&#10095;</button>
+  </div>
+</Layout>
+
+<script define:vars={{ fotos, base }}>
+  const lightbox = document.getElementById("lightbox");
+  const imgFull = document.getElementById("img-full");
+  const caption = document.getElementById("caption");
+  const closeBtn = document.querySelector(".close-btn");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const fotoItems = document.querySelectorAll(".foto-item");
+
+  let currentIndex = 0;
+
+  const updateImage = () => {
+    const foto = fotos[currentIndex];
+    imgFull.src = `${base}${foto.src}`;
+    caption.textContent = foto.alt;
+  };
+
+  // Abrir Lightbox
+  fotoItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      currentIndex = parseInt(item.getAttribute("data-index"));
+      updateImage();
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  // Navegación
+  nextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % fotos.length;
+    updateImage();
+  });
+
+  prevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + fotos.length) % fotos.length;
+    updateImage();
+  });
+
+  // Cerrar
+  const closeLightbox = () => {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "auto";
+  };
+
+  closeBtn.addEventListener("click", closeLightbox);
+
+  // Cerrar al hacer clic fuera
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox || e.target.classList.contains("img-container")) {
+      closeLightbox();
+    }
+  });
+
+  // Teclado
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("active")) return;
+    if (e.key === "ArrowRight") nextBtn.click();
+    if (e.key === "ArrowLeft") prevBtn.click();
+    if (e.key === "Escape") closeLightbox();
+  });
+</script>
+
+<style>
+  .galeria-section {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .linea-adorno {
+    width: 50px;
+    height: 3px;
+    background-color: #d4af37;
+    margin: 0 auto 3rem;
+  }
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .foto-item {
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 4 / 3;
+    cursor: pointer;
+    background: #222;
+  }
+  .foto-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .foto-item:hover img {
+    transform: scale(1.08);
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+  .lightbox.active {
+    display: flex;
+  }
+
+  .img-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    pointer-events: none;
+  }
+  .lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 4px;
+    pointer-events: auto;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  }
+  #caption {
+    margin-top: 1.5rem;
+    color: #d4af37;
+    font-size: 1.2rem;
+    font-weight: 600;
+    pointer-events: auto;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 10001;
+    line-height: 1;
+  }
+  .nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+  }
+  .nav-btn:hover {
+    background: #d4af37;
+    color: black;
+  }
+
+  @media (max-width: 768px) {
+    .lightbox {
+      padding: 1rem;
+    }
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+    .close-btn {
+      top: 1rem;
+      right: 1rem;
+    }
+  }
+</style>

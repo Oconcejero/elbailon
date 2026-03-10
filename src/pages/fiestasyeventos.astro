@@ -1,5 +1,157 @@
 ---
 import Layout from "../layout/layout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
-<Layout />
+<Layout title="Fiestas y Eventos | El Bailón">
+  <section class="eventos-hero">
+    <div class="container">
+      <h1>Fiestas y Eventos</h1>
+      <p class="subtitle">Mucho más que una escuela, un lugar para compartir</p>
+    </div>
+  </section>
+
+  <section class="eventos-intro">
+    <div class="container grid-eventos">
+      <div class="texto-eventos">
+        <h2>La familia de El Bailón</h2>
+        <p>
+          En nuestra escuela creemos que el baile no termina al salir de clase.
+          Por eso, organizamos periódicamente eventos donde poner en práctica
+          todo lo aprendido en un ambiente relajado y divertido.
+        </p>
+        <ul class="lista-eventos">
+          <li>
+            <i class="fas fa-check"></i> Fiestas sociales de Salsa y Bachata.
+          </li>
+          <li>
+            <i class="fas fa-check"></i> Milongas y tardes de Baile de Salón.
+          </li>
+          <li><i class="fas fa-check"></i> Galas de fin de curso en teatro.</li>
+          <li>
+            <i class="fas fa-check"></i> Salidas grupales a salas de baile.
+          </li>
+        </ul>
+      </div>
+      <div class="imagen-placeholder">
+        <img src={`${base}fiestas-eventos/imagen.jpg`} alt="Evento El Bailón" />
+      </div>
+    </div>
+  </section>
+
+  <section class="proximamente">
+    <div class="container">
+      <div class="box-proximamente">
+        <h3>¿Quieres celebrar algo con nosotros?</h3>
+        <p>
+          Estamos preparando nuestro próximo calendario de eventos. Si quieres
+          organizar una fiesta privada o un taller especial, no dudes en
+          contactarnos.
+        </p>
+        <a href={`${base}contacto/`} class="btn-eventos">Infórmate aquí</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .eventos-hero {
+    padding: 6rem 1rem 4rem;
+    text-align: center;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url("/img/hero-eventos-bg.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+  }
+
+  .eventos-intro {
+    padding: 4rem 1rem;
+  }
+
+  .grid-eventos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .texto-eventos h2 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+  }
+  .texto-eventos p {
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .lista-eventos {
+    list-style: none;
+    padding: 0;
+  }
+  .lista-eventos li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lista-eventos i {
+    color: var(--primary);
+  }
+
+  .imagen-placeholder img {
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid var(--primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .proximamente {
+    padding: 4rem 1rem;
+    background: #111;
+  }
+  .box-proximamente {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3rem;
+    border: 1px dashed var(--primary);
+    border-radius: 20px;
+  }
+
+  .btn-eventos {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    background: var(--primary);
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+  }
+
+  .btn-eventos:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    .grid-eventos {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>

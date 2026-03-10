@@ -129,7 +129,6 @@ const horariosManana = [
   <section class="horarios-section">
     <div class="container">
       <h1>Horarios 2025 - 2026</h1>
-      <p class="center">📍 Carretera de Canillas, 46 Posterior</p>
 
       <h2>Horario de Tardes</h2>
       <div class="table-container">
@@ -152,12 +151,12 @@ const horariosManana = [
                   <td class="actividad-name">
                     <strong>{h.actividad}</strong>
                   </td>
-                  <td>{h.lunes}</td>
-                  <td>{h.martes}</td>
-                  <td>{h.miercoles}</td>
-                  <td>{h.jueves}</td>
-                  <td>{h.viernes}</td>
-                  <td>{h.sabado}</td>
+                  <td data-label="Lunes">{h.lunes || "-"}</td>
+                  <td data-label="Martes">{h.martes || "-"}</td>
+                  <td data-label="Miércoles">{h.miercoles || "-"}</td>
+                  <td data-label="Jueves">{h.jueves || "-"}</td>
+                  <td data-label="Viernes">{h.viernes || "-"}</td>
+                  <td data-label="Sábado">{h.sabado || "-"}</td>
                 </tr>
               ))
             }

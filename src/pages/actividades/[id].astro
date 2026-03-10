@@ -1,0 +1,20 @@
+---
+import ActividadLayout from "../../layout/ActividadesLayout.astro";
+import { listaActividades } from "../../data/actividades.js";
+
+export async function getStaticPaths() {
+  return listaActividades.map((act) => ({
+    params: { id: act.slug },
+    props: { act },
+  }));
+}
+const { act } = Astro.props;
+---
+
+<ActividadLayout
+  titulo={act.titulo}
+  descripcion={act.descripcion}
+  videoId={act.videoId}
+  horarios={act.horarios}
+  img={act.img}
+/>

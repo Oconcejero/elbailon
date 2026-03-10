@@ -1,0 +1,32 @@
+---
+import Layout from "../../layout/layout.astro";
+import { listaActividades } from "../../data/actividades.js";
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Actividades | El Bailón">
+  <section class="seccion-listado-actividades">
+    <div class="contenedor-grid">
+      {
+        listaActividades.map((item) => (
+          <div class="tarjeta-pequena">
+            <div
+              class="tarjeta-img"
+              style={`background-image: url(${base}${item.img});`}
+            >
+              <div class="tarjeta-overlay">
+                <h3>{item.titulo}</h3>
+              </div>
+            </div>
+            <div class="tarjeta-info">
+              <p>{item.descripcion}</p>
+              <a href={`/actividades/${item.slug}/`} class="btn-ver-mas">
+                Me interesa
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

@@ -8,27 +8,39 @@
 
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
   font-family: 'Segoe UI', Roboto, sans-serif;
   background-color: #111;
-  /* Fondo oscuro para que resalte el contenido */
   color: var(--white);
+  overflow-x: hidden;
+
 }
 
-/* Header que ocupa todo el ancho */
+/* Header */
 .main-header {
   background-color: var(--dark);
   border-bottom: 1px solid rgba(212, 175, 55, 0.3);
   padding: 1rem 0;
+  width: 100% !important;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+main,
+section,
+.container {
   width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 .header-container {
   max-width: 1400px;
-  /* Contenedor ancho para que respire */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  /* Logo a la izquierda, Nav a la derecha */
   align-items: center;
   padding: 0 2rem;
 }
@@ -36,13 +48,18 @@ body {
 /* Logotipo más grande */
 .logo img {
   height: 150px;
-  /* Antes era 50px, ahora tiene más presencia */
   width: auto;
   transition: transform 0.3s ease;
 }
 
 .logo:hover img {
   transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .logo img {
+    height: 100px;
+  }
 }
 
 /* Navegación Horizontal */
@@ -70,7 +87,35 @@ body {
   color: var(--primary);
 }
 
-/* Botón Contacto - Pequeño pero matón */
+/* REDES*/
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: white;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .social-links {
+    margin-right: 0.5rem;
+  }
+}
+
 .btn-contacto {
   background-color: var(--primary);
   color: var(--dark) !important;
@@ -89,7 +134,6 @@ body {
 /* Franja de contacto debajo del video */
 .contact-strip {
   background-color: var(--primary);
-  /* El dorado de El Bailón */
   color: var(--dark);
   padding: 3rem 1rem;
   text-align: center;
@@ -132,49 +176,24 @@ body {
 .activities-full {
   display: flex;
   flex-wrap: wrap;
-  /* Para que en el móvil se pongan uno debajo de otro */
   width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box;
 }
 
 .activity-card {
   position: relative;
-  flex: 1 1 50%;
-  /* Dos cuadros por fila en PC */
+  min-width: 350px;
   height: 400px;
-  /* Altura de cada bloque */
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Imágenes de fondo para cada cuadro */
-.bailes-de-salon {
-  background: url('/elbailon/actividades/bailes-de-salon.jpg') center/cover no-repeat;
-}
 
-.latinos {
-  background: url('/elbailon/actividades/latinos.jpg') center/cover no-repeat;
-}
-
-.funky {
-  background: url('/elbailon/actividades/funcky.jpg') center/cover no-repeat;
-}
-
-.ballet {
-  background: url('/elbailon/actividades/ballet.jpg') center/cover no-repeat;
-}
-
-.puntas {
-  background: url('/elbailon/actividades/puntas.jpg') center/cover no-repeat;
-}
-
-.contemporaneo {
-  background: url('/elbailon/actividades/Baile-contemporáneo.jpg') center/cover no-repeat;
-}
 
 /* Capa oscura que se aclara al pasar el ratón */
 .activity-card::before {
@@ -190,7 +209,91 @@ body {
   background: rgba(0, 0, 0, 0.3);
 }
 
-/* Texto centrado */
+
+/* Contenedor principal para que la rejilla no se pegue a los bordes */
+.seccion-listado-actividades {
+  padding: 4rem 1rem;
+  background-color: #121212;
+}
+
+.contenedor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* LA TARJETA INDIVIDUAL */
+.tarjeta-pequena {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-pequena:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+}
+
+.tarjeta-img {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.tarjeta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.tarjeta-overlay h3 {
+  color: white;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.tarjeta-info {
+  padding: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-info p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.btn-ver-mas {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--primary);
+  padding: 0.6rem;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.btn-ver-mas:hover {
+  background: var(--primary);
+  color: black;
+}
+
 .card-content {
   position: relative;
   z-index: 2;
@@ -259,18 +362,15 @@ body {
   transition: all 0.3s ease;
 }
 
-/* --- Media Query para móviles (ajusta el px según necesites) --- */
 @media (max-width: 1024px) {
   .mobile-menu-toggle {
     display: flex;
-    /* Aparece la hamburguesa */
   }
 
   .nav-menu {
     position: fixed;
     top: 0;
     right: -100%;
-    /* Escondido a la derecha */
     width: 70%;
     height: 100vh;
     background-color: var(--dark);
@@ -282,7 +382,6 @@ body {
 
   .nav-menu.active {
     right: 0;
-    /* Se desliza hacia adentro */
   }
 
   .nav-links {
@@ -297,7 +396,6 @@ body {
 
   .nav-links .btn-contacto {
     width: 100%;
-    /* Que ocupe todo el ancho en el móvil */
     text-align: center;
     margin-left: 0;
   }
@@ -353,6 +451,7 @@ form {
   border: 1px solid #444;
   color: white;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .btn-enviar {
@@ -393,10 +492,8 @@ form {
 
 /* MAPA GOOGLE */
 
-/* Añade esto a tu bloque de estilos */
 .map-container {
   border: 2px solid #d4af37;
-  /* El dorado de tu logo */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -405,23 +502,33 @@ form {
 
 .map-container iframe {
   display: block;
-  /* Quita espacios raros debajo del mapa */
+  width: 100% !important;
+  height: auto;
+  min-height: 300px;
 }
 
+@media (max-width: 480px) {
+  .map-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
 
+  .rating-badge {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
 
-/* Añade esto a tu bloque de estilos */
 .google-maps-card {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  /* Asegúrate de que no tenga un padding que empuje el mapa */
   padding: 0;
 }
 
 .google-maps-card:hover iframe {
   filter: none;
-  /* Al pasar el ratón, vuelve a sus colores originales */
 }
 
 .map-header {
@@ -442,7 +549,6 @@ form {
   font-size: 1.4rem;
   font-weight: bold;
   color: var(--primary);
-  /* Tu dorado */
 }
 
 .stars {
@@ -471,56 +577,46 @@ form {
   color: #000;
 }
 
+/*-----------------------------------------------------------------------------*/
+
 /* ACTIVIDADES */
 
-.actividades-hero {
-  text-align: center;
+.seccion-actividades {
   padding: 4rem 1rem;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/hero-bg.jpg');
-  background-size: cover;
-  color: white;
+  background-color: #111;
 }
 
-.actividades-hero h1 {
-  font-size: 3.5rem;
-  color: var(--primary);
-  /* Tu dorado */
-  margin-bottom: 1rem;
-}
-
-.grid-actividades {
-  padding: 4rem 0;
-  background-color: #121212;
-}
-
-.cards-wrapper {
+.grid-contenedor {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.card {
-  background: #1e1e1e;
-  border-radius: 12px;
+.tarjeta-actividad {
+  background: #1a1a1a;
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease;
   border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-10px);
+.tarjeta-actividad:hover {
+  transform: translateY(-5px);
   border-color: var(--primary);
 }
 
-.card-img {
+.tarjeta-cabecera {
   height: 200px;
   background-size: cover;
   background-position: center;
   position: relative;
 }
 
-.overlay {
+.tarjeta-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
@@ -529,92 +625,151 @@ form {
   padding: 1rem;
 }
 
-.overlay h3 {
+.tarjeta-overlay h3 {
   color: white;
-  font-size: 1.5rem;
   margin: 0;
+  font-size: 1.4rem;
+  text-transform: uppercase;
 }
 
-.card-content {
+.tarjeta-cuerpo {
   padding: 1.5rem;
-  color: #ccc;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
 }
 
-.btn-saber-mas {
-  display: inline-block;
-  margin-top: 1rem;
+.tarjeta-cuerpo p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.btn-detalles {
   color: var(--primary);
   text-decoration: none;
   font-weight: bold;
-  border-bottom: 1px solid transparent;
-  transition: 0.3s;
+  padding: 0.6rem;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-.btn-saber-mas:hover {
-  border-bottom-color: var(--primary);
+.btn-detalles:hover {
+  background: var(--primary);
+  color: black;
 }
 
+.imagen-actividad-detalle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/*---------------------------------------------------------------------------*/
 /* HORARIOS */
 
-.horarios-section {
-  padding: 4rem 1rem;
-  background-color: #121212;
-  color: white;
-}
-
+/* Estilos base para la tabla */
 .table-container {
-  overflow-x: auto;
-  /* Permite scroll lateral en móviles */
-  margin-bottom: 3rem;
-  border: 1px solid #333;
+  margin: 2rem 0;
   border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   background: #1e1e1e;
-  min-width: 800px;
-  /* Asegura que la tabla no se aplaste */
 }
 
 th,
 td {
   padding: 1rem;
-  border: 1px solid #333;
   text-align: center;
-  font-size: 0.9rem;
+  border: 1px solid #333;
 }
 
 th {
   background-color: var(--primary);
-  color: black;
+  color: #000;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 800;
 }
 
 .actividad-name {
   background-color: #252525;
   color: var(--primary);
-  text-align: left;
+  font-size: 1.1rem;
 }
 
-tr:hover {
-  background-color: #2a2a2a;
-}
+/* --- TRANSFORMACIÓN MÓVIL --- */
+@media (max-width: 850px) {
 
-.center {
-  text-align: center;
-  margin-bottom: 2rem;
-}
+  thead {
+    display: none;
+  }
 
-.mt-4 {
-  margin-top: 4rem;
-}
+  /* Cada fila se convierte en una "tarjeta" separada */
+  tr {
+    display: block;
+    margin-bottom: 2rem;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    background: #1a1a1a;
+  }
 
-.notas {
-  margin-top: 2rem;
-  font-style: italic;
-  color: #888;
-  text-align: center;
+  /* Cada celda se comporta como un contenedor flexible */
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    border: none;
+    border-bottom: 1px solid #333;
+    padding: 0.8rem 1rem;
+  }
+
+  .actividad-name {
+    display: block;
+    text-align: center;
+    background-color: var(--primary);
+    color: #000;
+    font-weight: 900;
+    font-size: 1.3rem;
+  }
+
+  td:not(.actividad-name)::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-right: 1rem;
+    font-size: 0.8rem;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
 }

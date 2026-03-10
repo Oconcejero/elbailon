@@ -1,19 +1,20 @@
 ---
 import Layout from "../layout/layout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Inicio | Escuela El Bailón">
 	<section class="hero-home">
 		<video autoplay muted loop playsinline class="video-background">
-			<source src="/elbailon/sport.mp4" type="video/mp4" />
+			<source src={`${base}sport.mp4`} type="video/mp4" />
 		</video>
 
 		<div class="hero-overlay"></div>
 
 		<div class="hero-text">
 			<h1>Siente el ritmo</h1>
-			<p>La mejor escuela de baile de Madrid</p>
-			<a href="/elbailon/contacto" class="hero-cta"
+			<p>Clases de danza para todos los niveles en Madrid</p>
+			<a href={`${base}contacto/`} class="hero-cta"
 				>¡Reserva tu clase de prueba!</a
 			>
 		</div>
@@ -22,50 +23,68 @@ import Layout from "../layout/layout.astro";
 		<div class="container">
 			<h2>¿Tienes dudas? Pregúntanos!</h2>
 			<p>Estamos encantados de ayudarte a elegir tu estilo ideal.</p>
-			<a href="/elbailon/contacto" class="btn-outline"
+			<a href={`${base}/contacto/`} class="btn-outline"
 				>Ir al formulario de contacto</a
 			>
 		</div>
 	</section>
 
 	<section class="activities-full">
-		<div class="activity-card bailes-de-salon">
-			<a href="/elbailon/actividades#bailes-de-salon" class="card-content">
+		<div
+			class="activity-card bailes-de-salon"
+			style={`background-image: url(${base}actividades/bailes-de-salon.jpg);`}
+		>
+			<a href={`${base}actividades/bailes-de-salon/`} class="card-content">
 				<h2>Bailes de salón</h2>
 				<span>Ver horarios</span>
 			</a>
 		</div>
 
-		<div class="activity-card latinos">
-			<a href="/elbailon/actividades#latinos" class="card-content">
+		<div
+			class="activity-card latinos"
+			style={`background-image: url(${base}actividades/latinos.jpg);`}
+		>
+			<a href={`${base}actividades/latinos/`} class="card-content">
 				<h2>Latinos</h2>
 				<span>Ver horarios</span>
 			</a>
 		</div>
 
-		<div class="activity-card funky">
-			<a href="/elbailon/actividades#funky" class="card-content">
+		<div
+			class="activity-card funky"
+			style={`background-image: url(${base}actividades/funcky.jpg);`}
+		>
+			<a href={`${base}actividades/funky-hip-hop/`} class="card-content">
 				<h2>Funky Hip-Hop</h2>
 				<span>Ver horarios</span>
 			</a>
 		</div>
 
-		<div class="activity-card ballet">
-			<a href="/elbailon/actividades#ballet" class="card-content">
+		<div
+			class="activity-card ballet"
+			style={`background-image: url(${base}actividades/ballet.jpg);`}
+		>
+			<a href={`${base}actividades/ballet/`} class="card-content">
 				<h2>Ballet</h2>
 				<span>Ver horarios</span>
 			</a>
 		</div>
 
-		<div class="activity-card puntas">
-			<a href="/elbailon/actividades#puntas" class="card-content">
+		<div
+			class="activity-card puntas"
+			style={`background-image: url(${base}actividades/puntas.jpg);`}
+		>
+			<a href={`${base}actividades/puntas/`} class="card-content">
 				<h2>Puntas</h2>
 				<span>Ver horarios</span>
 			</a>
 		</div>
 
-		<div class="activity-card contemporaneo">
-			<a href="/elbailon/actividades#contemporaneo" class="card-content">
+		<div
+			class="activity-card contemporaneo"
+			style={`background-image: url(${base}actividades/Baile-contemporáneo.jpg);`}
+		>
+			<a href={`${base}actividades/contemporaneo/`} class="card-content">
 				<h2>Contemporáneo</h2>
 				<span>Ver horarios</span>
 			</a>
@@ -83,7 +102,7 @@ import Layout from "../layout/layout.astro";
 	.hero-home {
 		position: relative;
 		width: 100%;
-		height: 80vh; /* Ajusta este valor si quieres que sea más alto o bajo */
+		height: 80vh;
 		display: flex;
 		align-items: center;
 		justify-content: center;

@@ -1,0 +1,123 @@
+---
+import Layout from "./layout.astro";
+const { frente, titulo, descripcion, img, horarios } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title={`${titulo} | El Bailón`}>
+  <section class="actividad-detalle">
+    <div class="container">
+      <h1>{titulo}</h1>
+      <div class="linea-adorno"></div>
+
+      <div class="info-principal">
+        <div class="texto">
+          <p>{descripcion}</p>
+        </div>
+        <div class="video-container">
+          {
+            img ? (
+              <img
+                src={`${base}${img}`}
+                alt={`Imagen de ${titulo}`}
+                class="imagen-actividad-detalle"
+              />
+            ) : (
+              <div class="video-placeholder">Imagen no disponible</div>
+            )
+          }
+        </div>
+      </div>
+
+      <div class="horarios-especificos">
+        <h2>Horarios</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(horarios).map((dia) => <th>{dia}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {
+                  Object.values(horarios).map((horas) => (
+                    <td>
+                      {Array.isArray(horas)
+                        ? horas.map((h) => (
+                            <span>
+                              {h}
+                              <br />
+                            </span>
+                          ))
+                        : horas}
+                    </td>
+                  ))
+                }
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .actividad-detalle {
+    padding: 4rem 1rem;
+  }
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+  .linea-adorno {
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    margin: 0 auto 3rem;
+  }
+
+  .info-principal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para que flote */
+    border: 2px solid var(--primary);
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .horarios-especificos h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .info-principal {
+      grid-template-columns: 1fr;
+    }
+    h1 {
+      font-size: 2.2rem;
+    }
+  }
+</style>
