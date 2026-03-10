@@ -1,43 +1,17 @@
-# Astro Starter Kit: Minimal
+<h1 align="center" style="color: #0366d6;">
+   WEB responsive EL BAILÓN
+</h1>
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Web escuela de baile.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Descripción 📝
 
-## 🚀 Project Structure
+Proyecto realizado con ASTRO de una escuela de baile en Madrid
 
-Inside of your Astro project, you'll see the following folders and files:
+## Vista previa en vivo 👀
+Puedes ver la web funcionando aquí: <br>
+🔗 https://oconcejero.github.io/elbailon/
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Puedes ver una vista previa en vivo de la página.
+![Web REACT](img/elbailon.jpg)
