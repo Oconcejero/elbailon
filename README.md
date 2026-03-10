@@ -14,4 +14,4 @@ Puedes ver la web funcionando aquí: <br>
 
 
 Puedes ver una vista previa en vivo de la página.
-![Web REACT](img/elbailon.jpg)
+![Web EL BAILÓN](img/elbailon.jpg)
