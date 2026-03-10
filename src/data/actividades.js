@@ -69,7 +69,7 @@ export const listaActividades = [
     slug: "contemporaneo",
     titulo: "Contemporáneo",
     descripcion: "A partir de los 6 años, clases del baile más moderno y divertido.",
-    img: "actividades/actividades_full/Baile-contemporáneo-400x284.jpg",
+    img: "actividades/actividades_full/Baile-contemporaneo-400x284.jpg",
     videoId: "dQw4w9WgXcQ",
     horarios: {
       Lunes: ["18:00 h"],
